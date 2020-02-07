@@ -92,13 +92,29 @@ setopt HIST_IGNORE_SPACE
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# docker-alias
 alias dc='docker-compose'
 alias dcu='docker-compose up -d'
 alias dcd='docker-compose down'
 alias dcb='docker-compose exec web bash'
 alias dcl='docker-compose logs -f'
 alias dcs='docker-compose stop'
-PROMPT='%M %{$fg_bold[magenta]%}➜ %{$fg_bold[blue]%}%p %{$fg[cyan]%}%~ %{$fg_bold[red]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}<3 '
+PROMPT='%M %{$fg_bold[magenta]%}➜ %{$fg_bold[blue]%}%p %{$fg[cyan]%}%~ %{$fg_bold[red]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}✳️ '
+#server alias
 alias kms='php ~/dev/km77-infrastructure/aws-instance-connector/SshConnectToAwsInstance.php'
+#alias
 alias cl='clear'
+alias cdc='cd $HOME/dev'
+#alias for making sudo with alias
+alias sudo='sudo '
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#cute and curious alias
+alias gitst='git status | cowsay -n'
+#functions
+function docker_list {
+	containers=$(docker ps |awk '{if (NR!=1) print $1 ": "$(NF)}')
+	echo "CONTAINERS 🐟"
+	echo $containers
+}
+
